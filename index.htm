@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="img/logo.png">
+	<title>Proof Of Poetry</title> 
+	<meta name="description" content="Generate a poem with sentences extracted from Bitcoin's White Paper." />
+
+	<!-- Twitter Card data --> 
+	<meta name="twitter:card" content="Proof of Poetry"> 
+	<meta name="twitter:site" content="http://www.proofofpoetry.com"> 
+	<meta name="twitter:title" content="Proof of Poetry"> 
+	<meta name="twitter:description" content="Generate a poem with sentences extracted from Bitcoin's White Paper."> 
+	<meta name="twitter:creator" content="@nico_lrx">
+	<!-- Twitter Summary card images must be at least 120x120px --> 
+	<meta	name="twitter:image" content="http://www.proofofpoetry.com/img/proofofpoetry.png">
+
+	<!-- Open Graph data --> 
+	<meta property="og:title" content="Proof of Poetry" /> 
+	<meta property="og:type" content="article" /> 
+	<meta property="og:url" content="http://www.proofofpoetry.com/" /> 
+	<meta property="og:image" content="http://proofofpoetry.com/img/proofofpoetry.png" />
+	<meta property="og:description" content="Generate a poem with sentences extracted from Bitcoin's White Paper." />
+	<meta property="og:site_name" content="Proof of Poetry" />
+
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://use.fontawesome.com/ebf6b4fc79.js"></script>
+	<script src="shot/html2canvas.js"></script>
+	<script src="shot/poem_shot.js"></script>
+
+</head>
+<body>
+<div id="column">
+	<a href="/" title="Proof of Poetry"><img src="img/logo.png" alt="Proof of Poetry" /></a>
+	<div id="menu">
+	<ul>
+		<li id="about"><a href="/about">About</a></li>
+		<li id="donation"><a href="bitcoin:19rnx9tMJbXVQ6uKvhwZSPgoMFp2vjFTM3">Donate bitcoin</a></li>
+		<li id="qr-bit"><img src="img/bitcoin-qr.png" alt="Donate bitcoin" /></li>
+		<li id="logo_algolia"><p style="font-size:0.85em;font-style:italic;">Built with</p><a href="http://www.algolia.com/?utm_source=ProofOfPoetry&amp;utm_medium=link&amp;utm_campaign=proof_of_poetry" target="_blank" title="Algolia Realtime Search""><img alt="Algolia" src="img/Algolia_logo_bg-dark.svg"></a></li>
+	</ul>
+	</div>
+</div>
+<div id="social">
+	<ul>
+		<li><a href="https://www.facebook.com/dialog/feed?app_id=134530986736267&link=http%3A%2F%2Fwww.proofofpoetry.com%2F&picture=http%3A%2F%2Fwww.proofofpoetry.com%2Fimg%2Fproofofpoetry.png&name=Proof+of+Poetry&description=Generate+a+poem+with+sentences+extracted+from+Bitcoin%27s+White+Paper.&redirect_uri=http://facebook.com/" target="_blank"><i class="fa fa-facebook fa-2x"></i></a></li>
+		<li><a href="https://twitter.com/intent/tweet?text=Proof+of+Poetry%3A+Generate+a+poem+with+sentences+extracted+from+Bitcoin%27s+White+Paper+by+%40nico_lrx+%23bitcoin+http%3A%2F%2Fproofofpoetry.com%2F" target="_blank"><i class="fa fa-twitter fa-2x"></i></a></li>
+	</ul>
+</div>
+<div id="main-container">
+	<header>
+		<h1>Proof of Poetry</h1>
+		<h2 class="instructions">Choose one poetry line to randomly generate a bitcoin poem:</h2>
+		<div id="stats" class="instructions"></div>
+	</header>
+		<div class="container">
+			<main>
+				<div id="search-input"></div>
+				<div id="right-column">
+					<div id="hits"></div>
+					<div id="hits2"></div>
+					<!--  <div class="share-poem"><a onclick="takeShot();">Share on Twitter</a></div> -->
+				</div>
+			</main>
+		</div> <!-- end container -->
+	
+		<!-- TEMPLATES -->
+		<script type="text/html" id="no-results-template">
+			<div id="no-results-message">
+				<p>No proof of poetry for <em>"{{query}}"</em>.</p>
+			</div>
+		</script>
+		<!-- /TEMPLATES -->
+
+</div> <!-- end main-container div -->
+
+<!-- Bottom right ribbon Hithub http://codepen.io/Vampireos/pen/qkEmJ -->
+<!-- 
+<div class="github-fork-ribbon-wrapper right-bottom">
+    <div class="github-fork-ribbon">
+        <a href="https://github.com/simonwhitaker/github-fork-ribbon-css">Fork me on GitHub</a>
+    </div>
+</div>
+ -->
+<!-- End ribbon -->
+
+<!-- SCRIPTS -->
+	<script src="http://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+	<script src="app.js"></script>
+	<script src="app2.js"></script>
+	<script src="app3.js"></script>
+<!-- /SCRIPTS --> 
+   
+<script>
+
+	var search_box = document.getElementsByClassName('ais-search-box');
+	var instr = document.getElementsByClassName('instructions');
+	var share = document.getElementsByClassName('share-poem');
+
+	search_box[1].style.display = 'none';
+	search_box[2].style.display = 'none';
+
+	function choice(d) {
+	// search_box[0].style.display = 'none';
+	var choice_query = d.getAttribute("data-phon");
+	var choice_line = d.innerHTML;
+
+	app2(choice_query);
+	app3();
+
+	search_box[0].style.display = 'none';
+	instr[0].style.display = 'none';
+	instr[1].style.display = 'none';
+	share[0].style.display = 'block';
+
+	// var node = document.createElement("h3"); 
+	// node.className = "line2";                // Create a <li> node
+	// var textnode = document.createTextNode(choice_line);         // Create a text node
+	// node.appendChild(textnode);                              // Append the text to <li>
+	// document.getElementById("hits").appendChild(node);
+
+	}
+  
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79178287-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

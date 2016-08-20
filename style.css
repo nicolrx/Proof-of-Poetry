@@ -1,0 +1,366 @@
+/* GENERAL */
+* {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  margin: 0;
+}
+html {
+  overflow-y: scroll;
+  margin: 0;
+}
+body {
+  margin: 0;
+}
+header, main, #no-results, footer {
+  width: 100%;
+  margin: 0 auto;
+}
+#column {
+  background-color: #5C56B2;
+  float: left;
+  width: 17%;
+  height: 100vh;
+  z-index: 1;
+  display: inline-block;
+}
+#column img {
+  width: 100%;
+  border-bottom: 2px solid white;
+}
+#main-container {
+  display: inline-block;
+  width: 60%;
+  padding: 35px 35px;
+}
+
+h1 {
+  background: #8e8a89;
+  background: -webkit-linear-gradient(-25deg, #5C56B2 80%, #5C56B2 20%, #ffb487 80%);
+  background: -o-linear-gradient(-25deg, #5C56B2 80%, #5C56B2 20%, #ffb487 80%);
+  background: -moz-linear-gradient(-25deg, #5C56B2 80%, #5C56B2 20%, #ffb487 80%);
+  background: linear-gradient(-25deg, #5C56B2 80%, #5C56B2 20%, #ffb487 80%); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h2 {
+  color: #5C56B2; 
+  font-weight: 400;
+  padding-top: 20px;
+}
+.clear:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* INPUT */
+#search-input {
+  padding-top: 0px;
+}
+#search-input input {
+  font-size: 28px;
+  font-weight: 100;
+  width: 100%!important;
+  height: 50px;
+  padding: 10px 0px 6px;
+  border: none;
+}
+#search-input input, #search-input input:focus {
+  transition: border-color .3s ease-in;
+  outline: 0;
+}
+#search-input input:focus {
+  border-color: #F37035;
+}
+#search-input input::-webkit-input-placeholder, #search-input input:-moz-placeholder, #search-input input:-moz-placeholder, #search-input input:-ms-input-placeholder {
+  font-weight: 100;
+  color: #999;
+}
+
+/* HITS */
+.first-choice {
+  color: #8e8a89;
+  padding: 10px 0 10px 0;
+}
+.first-choice:hover {
+  cursor: pointer;
+  color: #6b6867;
+}
+
+/* STATS */
+
+#stats {
+  padding: 10px 2px;
+  font-size: 10pt;
+  color: #8e8a89;
+}
+
+/* NO RESULTS */
+.no-results #pagination, .no-results #sort-by, .no-results #stats, .no-results #facets {
+  display: none;
+}
+#no-results-message p {
+  font-size: 28px;
+  font-weight: 100;
+}
+#no-results-message ul {
+  list-style-type: none;
+}
+#no-results-message li {
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+  margin: 4px 2px;
+  padding: 4px 28px 4px 8px;
+  color: #999;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+#no-results-message li span.value {
+  font-weight: bold;
+  color: #000;
+}
+#no-results-message li a.remove img {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  float: right;
+  width: 17px;
+  height: 17px;
+  opacity: .5;
+}
+#no-results-message li a.remove:hover img {
+  opacity: 1;
+}
+a.clear-all {
+  font-size: 12px;
+  line-height: 1;
+  display: inline-block;
+  margin: 10px;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: black;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+a.clear-all:hover {
+  transition: border-color .3s ease-in;
+  border-color: #999;
+}
+
+/* DISPLAY POEM */
+.line2 {
+  line-height: 60px;
+  color: #ffb487;
+  cursor: initial!important;
+}
+
+.line3 {
+  line-height: 60px;
+  position: relative;
+  bottom: 211px;
+  color: #5C56B2;
+}
+.instruction {
+  display: block;
+}
+
+/* MENU */
+
+#column ul {
+  list-style-type: none;
+  color: white;
+  padding-top: 30px;
+  padding-left: 0;
+  line-height: 30px;
+  font-weight: 300;
+  text-align: center;
+}
+
+#qr-bit {
+  margin-top: 20px;
+  width: 50%;
+  margin: 20px auto;
+}
+
+
+#column ul li a {
+  color: white!important;
+  text-decoration: none;
+}
+
+#column ul li a:hover {
+  text-decoration: underline;
+}
+
+#logo_algolia {
+  width: 45%;
+  margin: auto;
+  padding-top: 60px;
+  opacity: 0.8;
+}
+
+#logo_algolia:hover {
+  opacity: 1;
+}
+
+#social {
+  float: right;
+  padding: 35px 15px 0 0;  
+  display: inline-block;
+  height: 200px;
+  width: 80px;
+}
+
+#social ul {
+  list-style-type: none;
+}
+
+#social ul li {
+  width: 40px;
+  height: 40px;
+  padding: 5px 0 5px;
+  cursor: pointer!important;
+}
+
+#social ul li i {
+  color: #5C56B2;
+  transition: color 0.3s ease;
+}
+
+#social ul li i:hover {
+  color: #ffb487;
+}
+
+.share-poem {
+  display: none;
+}
+
+/* RIBBON GITHUB */
+/* Left will inherit from right (so we don't need to duplicate code */
+
+.github-fork-ribbon {
+  /* The right and left lasses determine the side we attach our banner to */
+  position: absolute;
+  /* Add a bit of padding to give some substance outside the "stitching" */
+  padding: 2px 0;
+  /* Set the base colour */
+  background-color: #8d8990;
+  /* Set a gradient: transparent black at the top to almost-transparent black at the bottom */
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.00)), to(rgba(0, 0, 0, 0.15)));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.00), rgba(0, 0, 0, 0.15));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.00), rgba(0, 0, 0, 0.15));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.00), rgba(0, 0, 0, 0.15));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.00), rgba(0, 0, 0, 0.15));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0.00), rgba(0, 0, 0, 0.15));
+  filter: progid: DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#000000', EndColorStr='#000000');
+  /* Add a drop shadow */
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.github-fork-ribbon a,
+.github-fork-ribbon a:hover {
+  /* Set the font */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+  /* Set the text properties */
+  text-decoration: none;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  /* Set the geometry. If you fiddle with these you'll also need to tweak the top and right values in #github-fork-ribbon. */
+  width: 200px;
+  line-height: 20px;
+  /* Set the layout properties */
+  display: inline-block;
+  padding: 2px 0;
+  /* Add "stitching" effect */
+  border-width: 1px 0;
+  border-style: dotted;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.github-fork-ribbon-wrapper {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  z-index: 9999;
+}
+
+.github-fork-ribbon-wrapper.fixed {
+  position: fixed;
+}
+
+.github-fork-ribbon-wrapper.left {
+  left: 0;
+}
+
+.github-fork-ribbon-wrapper.right {
+  right: 0;
+}
+
+.github-fork-ribbon-wrapper.left-bottom {
+  position: fixed;
+  top: inherit;
+  bottom: 0;
+  left: 0;
+}
+
+.github-fork-ribbon-wrapper.right-bottom {
+  position: fixed;
+  top: inherit;
+  bottom: 0;
+  right: 0;
+}
+
+
+.github-fork-ribbon-wrapper.right-bottom .github-fork-ribbon {
+  top: 80px;
+  right: -43px;
+  /* Rotate the banner -45 degrees */
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+
+/* Responsive */
+@media (max-width: 600px) {
+    #column {
+	  width: 100%;
+	  height: 74px;
+	  z-index: 1;
+	  display: block;
+	}
+
+    #column img {
+	  width: 20%;
+	}
+	
+	#column ul {
+	  display: none;
+	}
+	
+	#social {  
+	  display: none;
+	}
+	
+	.github-fork-ribbon-wrapper {
+	  display: none;
+	}	
+	
+	#right-column {
+ 	  font-size: 10pt!important;
+ 	  
+	}
+	
+	.line3 {
+	  position: relative;
+      bottom: 267px;
+	}
+}
